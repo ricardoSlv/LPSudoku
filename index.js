@@ -1,8 +1,14 @@
 
 fs = require('fs');
 
-fs.unlinkSync('vars.txt')
-fs.unlinkSync('singles.txt')
+try {
+    fs.unlinkSync('vars.txt')
+    fs.unlinkSync('singles.txt')
+    fs.unlinkSync('obj.txt')
+}
+catch (error) {
+    console.log("Couldn't delete file, probably didn't exist");
+}
 
 //----- O valor de xij é igual à soma de todos os valores que lá estiverem
 
@@ -47,7 +53,7 @@ for (col = 1; col <= 9; col++) {
     //valor
     for (val = 1; val <= 9; val++) {
         //coluna
-        for (line = 1; line <= 8; line++) {
+        for (line = 1; line <= 9; line++) {
             fs.appendFileSync(`./singles.txt`, `x${line}${col}_${val} + `, 'ascii', (error) => { if (error) { return console.log(error); } });
         }
         fs.appendFileSync(`./singles.txt`, `x9${col}_${val} `, 'ascii', (error) => { if (error) { return console.log(error); } });

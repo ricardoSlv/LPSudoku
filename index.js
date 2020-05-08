@@ -5,6 +5,7 @@ try {
     fs.unlinkSync('vars.txt')
     fs.unlinkSync('singles.txt')
     fs.unlinkSync('obj.txt')
+    fs.unlinkSync('bin.txt')
 }
 catch (error) {
     console.log("Couldn't delete file, probably didn't exist");
@@ -53,7 +54,7 @@ for (col = 1; col <= 9; col++) {
     //valor
     for (val = 1; val <= 9; val++) {
         //coluna
-        for (line = 1; line <= 9; line++) {
+        for (line = 1; line <= 8; line++) {
             fs.appendFileSync(`./singles.txt`, `x${line}${col}_${val} + `, 'ascii', (error) => { if (error) { return console.log(error); } });
         }
         fs.appendFileSync(`./singles.txt`, `x9${col}_${val} `, 'ascii', (error) => { if (error) { return console.log(error); } });
@@ -79,15 +80,30 @@ for (line = 0; line <= 2; line++) {
     }
 }
 
+// -- funcao objetivo --
+
 for (col = 1; col <= 9; col++) {
     //valor
     for (val = 1; val <= 9; val++) {
         //coluna
-        for (line = 1; line <= 8; line++) {
-            fs.appendFileSync(`./obj.txt`, `x${line}${col}_${val} +`, 'ascii', (error) => { if (error) { return console.log(error); } });
+        for (line = 1; line <= 9; line++) {
+            fs.appendFileSync(`./obj.txt`, `x${line}${col}_${val} + `, 'ascii', (error) => { if (error) { return console.log(error); } });
         }
     }
     fs.appendFileSync(`./obj.txt`, `\n`, 'ascii', (error) => { if (error) { return console.log(error); } });
+}
+
+// -- variavies binarias --
+
+for (col = 1; col <= 9; col++) {
+    //valor
+    for (val = 1; val <= 9; val++) {
+        //coluna
+        for (line = 1; line <= 9; line++) {
+            fs.appendFileSync(`./bin.txt`, `x${line}${col}_${val}, `, 'ascii', (error) => { if (error) { return console.log(error); } });
+        }
+    }
+    fs.appendFileSync(`./bin.txt`, `\n`, 'ascii', (error) => { if (error) { return console.log(error); } });
 }
 
 //Alguns quadradosxyvalor=1
